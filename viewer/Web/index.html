@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Petrel STL</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/viewer.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-name"><span class="app-mark" aria-hidden="true"></span>Petrel STL</div>
+    <button id="open-file" class="open-file" type="button">Открыть STL <kbd>Ctrl O</kbd></button>
+    <input type="file" id="file-picker" accept=".stl,model/stl" hidden>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <h2>Модели проекта</h2>
+      <div id="sample-list" class="sample-list"></div>
+      <p id="no-samples" class="no-samples" hidden>Выберите STL на диске, чтобы открыть модель.</p>
+    </aside>
+
+    <section class="model-pane" aria-label="Просмотр модели">
+      <div class="model-header">
+        <div class="model-title">
+          <h1 id="model-name">Просмотр STL</h1>
+          <p id="model-detail" hidden></p>
+        </div>
+        <div class="views" aria-label="Ракурс">
+          <button type="button" data-view="orbit" aria-pressed="true" disabled>Объём</button>
+          <button type="button" data-view="top" aria-pressed="false" disabled>Сверху</button>
+          <button type="button" data-view="front" aria-pressed="false" disabled>Спереди</button>
+        </div>
+      </div>
+
+      <div id="stage" class="stage">
+        <canvas id="viewport" tabindex="0" aria-label="Интерактивная трёхмерная модель" aria-describedby="controls-help"></canvas>
+        <canvas id="axes" width="72" height="72" aria-hidden="true" hidden></canvas>
+        <div id="model-message" class="model-message" role="status" hidden></div>
+        <div class="drag-message" aria-hidden="true">Открыть STL</div>
+        <p id="controls-help" class="controls-help" hidden>Перетаскивание — поворот · Shift — сдвиг · Колесо — масштаб</p>
+        <button id="fit" class="fit-button" type="button" title="Вписать модель в окно" disabled>Вписать</button>
+      </div>
+
+      <div class="model-summary" id="model-summary" hidden>
+        <span><span class="summary-label">Размеры</span> <strong id="dimensions"></strong></span>
+        <span><span class="summary-label">Треугольники</span> <strong id="triangle-count"></strong></span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
